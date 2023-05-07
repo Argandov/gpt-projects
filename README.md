@@ -1,8 +1,6 @@
-# 1. GPT-Chatter
+# 1. GPT-File-Explorer.py
 
-GPT-Chatter is a Python program that uses the OpenAI GPT-3 API to provide chatbot functionality. This program allows users to engage in natural language conversations with an AI chatbot powered by GPT-3.
-
-It can read local files and process them according to the prompt (See "usage").
+GPT-File-Explorer.py is a Python program that uses the OpenAI GPT-3 API to provide chatbot functionality. It can also read a local file and process it according to the given prompt. See "usage" and "examples". It has an extra functionality for reading JSON files.
 
 ## Requirements
 
@@ -17,10 +15,10 @@ You will also need to install the following Python packages:
 - Install python's dotenv, and add your own OPENAI_API_KEY to the .env file.
 - Change the OpenAI model (By default it uses gpt-3.5 Turbo)
 
-To start a conversation with the GPT-3 chatbot, simply run the `gpt-chatter.py` script and enter a message when prompted.
+To start a conversation with the GPT-3 chatbot, simply run the `gpt-file-explorer.py` script and enter a message when prompted.
 
 You can optionally provide a JSON or plain text file to the chatbot by using the `/file:` 
-command followed by the file path. For example, `/file:path/to/file.json`.
+command followed by the file path. For example, `/file:file.json`.
 
 Note: I haven't modified the `/file:` functionality so it can handle actual filepaths so it can only read files inside the same directory this script runs on.
 
