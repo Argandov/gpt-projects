@@ -40,6 +40,8 @@ in tandem with user input, as long as the file contains data that can be read by
 [i] Execution time: 8.44 seconds
 ```
 
+I was feeling lazy so I decided to generate this Markdown readme file by:
+
 ```
 [Prompt]> Document the program /file:gpt-chatter.py summarize it into a README.md file for Github, and provide some useful use cases for it
 
