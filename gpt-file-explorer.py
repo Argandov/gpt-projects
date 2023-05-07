@@ -10,6 +10,7 @@ import sys
 config = dotenv_values(".env")
 OPENAI_API_KEY = config["OPENAI_API_KEY"]
 OPENAI_MODEL = "gpt-3.5-turbo"
+mood = "First respond correctly and appropriately to user prompts, and finish with very bad jokes about the conversation."
 
 # AUTH
 openai.api_key = OPENAI_API_KEY
@@ -28,7 +29,7 @@ def prepare_response(res,st,filename=None):
     content = res['choices'][0]['message']['content']
 
     # Print out information in desired format
-    print(f"{LIGHT_BLUE}\n[Response]>{RESET} {content}")
+    print(f"{LIGHT_BLUE}[Response]> {content}{RESET}")
 
     # Calculate and print out cost based on total tokens used
     cost_per_token = 0.002 / 1000  # Price per token in dollars
@@ -68,12 +69,12 @@ def chatter(msg, st, filename=None):
         new_msg = msg + FILE_CONTENTS
 
         messages = [
-            {"role": "system", "content": "You are Terminator"},
+            {"role": "system", "content": mood},
             {"role": "user", "content": new_msg}
         ]
     else:
         messages = [
-            {"role": "system", "content": "You are Terminator"},
+            {"role": "system", "content": mood},
             {"role": "user", "content": msg}
         ]
     
@@ -81,22 +82,23 @@ def chatter(msg, st, filename=None):
         model = OPENAI_MODEL,
         messages = messages
     )
-
-
     
     return prepare_response(res,st,filename)
 
-while True:
-    
-    message = input(f"{PINK}[Prompt]> {RESET}")
-
-    st = time.time()
-    filename_match = re.search(r'/file:(\S+)', message)
+def _prepare_input(prompt):
+    filename_match = re.search(r'/file:(\S+)', prompt)
     if filename_match:
         filename = filename_match.group(1)
-        filename = filename.replace('/file:', '')
-        message = message.replace('/file:' + filename, filename)
-        chatter(message,st,filename)
-    
+        filename_clean = re.sub(r'[^\w.]+$', '', filename)
+        clean_message = prompt.replace('/file:' + filename, filename_clean)
     else:
-        chatter(message,st)
+        filename_clean = None
+        clean_message = prompt
+    return clean_message, filename_clean
+
+while True:
+    
+    msg, filename = _prepare_input(input(f"{PINK}[Prompt]> {RESET}"))
+    st = time.time()
+    chatter(msg,st,filename)
+
