@@ -2,6 +2,10 @@
 
 GPT-File-Explorer.py is a Python program that uses the OpenAI GPT-3 API to provide chatbot functionality. It can also read a local file and process it according to the given prompt. See "usage" and "examples". It has an extra functionality for reading JSON files.
 
+It also has a very bad humor:
+
+![alt text](images/gpt-chatterPy.PNG)
+
 ## Requirements
 
 To run this program, you will need an OpenAI API key and a valid GPT-3 model. Set these values in a `.env` file as `OPENAI_API_KEY` and `OPENAI_MODEL`.
@@ -14,6 +18,7 @@ You will also need to install the following Python packages:
 
 - Install python's dotenv, and add your own OPENAI_API_KEY to the .env file.
 - Change the OpenAI model (By default it uses gpt-3.5 Turbo)
+- Change "mood" variable for context
 
 To start a conversation with the GPT-3 chatbot, simply run the `gpt-file-explorer.py` script and enter a message when prompted.
 
