@@ -9,7 +9,6 @@ To run this program, you will need an OpenAI API key and a valid GPT-3 model. Se
 You will also need to install the following Python packages:
 - `openai`
 - `dotenv`
-- `pygments`
 
 ## Usage
 
