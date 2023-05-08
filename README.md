@@ -1,3 +1,9 @@
+# Tokenizer.py
+
+Pass it a file as an argument, "tokenize" its contents, and provide a total count at stdout. 
+̣
+Simply `python3 tokenizer.py <my-file>` to get a complete count of its contents' Tokens
+
 # 1. GPT-File-Explorer.py
 
 GPT-File-Explorer.py is a Python program that uses the OpenAI GPT-3 API to provide chatbot functionality. It can also read a local file and process it according to the given prompt. See "usage" and "examples". It has an extra functionality for reading JSON files.
